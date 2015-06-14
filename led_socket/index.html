@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Designing with Xilinx FPGAs, Comprehensive</title>
+    <script src = "/socket.io/socket.io.js" > </script>
+    <script type=text/javascript src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+        var socket = io.connect();
+            socket.on('ledstatus', function (data) {
+                console.log(data);
+                $("body").css("background-color", data);
+            });
+    </script>
+    <script>
+    function led1On(){
+      socket.emit('led1', 'on');
+       
+    }
+    function led1Off(){
+      socket.emit('led1', 'off');
+    }
+    function led2On(){
+      socket.emit('led2', 'on');
+       
+    }
+    function led2Off(){
+      socket.emit('led2', 'off');
+    }
+    function led3On(){
+      socket.emit('led3', 'on');
+       
+    }
+    function led3Off(){
+      socket.emit('led3', 'off');
+    }
+    </script>
+</head> 
+ 
+<body>
+    <h1>Final Project: LED control via Web</h1>
+    <h2>                   Jae Yang Park  </h2>
+    <ul>
+        <li>Hardware: Zybo board (Xilinx Zynq)</li>
+        <li>OS: Linux (Xillinux, Kernel 3.12.0)</li>
+        <li>node.js: v0.10.28</li>
+        <li>npm: 1.4.9</li>
+    </ul>  
+    <h3>GREEN</h3>
+    <input type="button" name="on" id="onButton" value="on" onClick="led1On();">
+    <input type="button" name="off" id="offButton" value="off" onClick="led1Off();">
+    <br>
+    <h3>RED</h3>
+    <input type="button" name="on" id="onButton" value="on" onClick="led2On();">
+    <input type="button" name="off" id="offButton" value="off" onClick="led2Off();">
+    <br>
+    <h3>YELLO</h3>
+    <input type="button" name="on" id="onButton" value="on" onClick="led3On();">
+    <input type="button" name="off" id="offButton" value="off" onClick="led3Off();">
+</body>
+</html>
+
